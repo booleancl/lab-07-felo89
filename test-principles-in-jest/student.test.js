@@ -14,7 +14,11 @@ const Student = require('../SUT/classes/student')
 
 
 describe('Student', () => {
-  const student = new Student('Miles', 'Davis')
+  let student
+
+  beforeEach(() => {
+    student = new Student('Miles', 'Davis')
+  })
 
   it('Every student has a name and Lastname', () => {
     expect(student.name).toEqual('Miles')
@@ -41,6 +45,7 @@ describe('Student', () => {
   })
 
   it('should can mark attendance by default except if isAbasence is set to true', () => {
+    console.log(student)
     expect(student.canMarkAttendance()).toEqual(true)
 
     student.markAbsence(true)
